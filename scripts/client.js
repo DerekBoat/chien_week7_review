@@ -1,5 +1,8 @@
 $( document ).ready( onReady );
 
+// globals
+let inventory = [];
+
 function onReady(){
     console.log( 'in onReady' );
     $( '#addItemButton' ).on( 'click', addItem );
@@ -14,4 +17,20 @@ function addItem(){
         color: $( '#colorIn' ).val()
     } // end newItem
     console.log( 'adding:', newItem );
+    inventory.push( newItem );
+    displayInventory();
 } // end addItem
+
+function displayInventory(){
+    console.log( 'in displayInventory' );
+    // select output element
+    let el = $( '#itemsOut' );
+    // empty out out element
+    el.empty();
+    // loop through array
+    for( let i=0; i<inventory.length; i++ ){
+        // append each item to DOM
+        el.append( `<li>${ inventory[i].description }:
+        ${ inventory[i].size }, ${ inventory[i].color }</li>` );
+    } // end for
+} // end displayInventory
