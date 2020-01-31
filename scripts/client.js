@@ -67,6 +67,18 @@ function search(){
 function sellItem(){
     console.log( 'in sellItem' );
     let el = $( this );
-    console.log( 'clicked on:', el );
-    console.log( 'my parent:', el.parent() );
+    let string = el.parent()[0].innerText;
+    let index = string.lastIndexOf( ' ' );
+    string = string.substring( 0, index );
+    console.log( string );
+    // loop through inventory
+    for( let i=0; i<inventory.length; i++ ){
+        // find a match on name
+        if( inventory[i].description === string ){
+            // splice match out of array
+            inventory.splice( i, 1 );
+        } // end if
+    } // end for
+    console.log( 'inventory:', inventory );
+    displayInventory();
 } // end sellItem
