@@ -6,6 +6,7 @@ let inventory = [];
 function onReady(){
     console.log( 'in onReady' );
     $( '#addItemButton' ).on( 'click', addItem );
+    $( '#searchButton' ).on( 'click', search );
 } // end onReady    
 
 function addItem(){
@@ -34,3 +35,20 @@ function displayInventory(){
         ${ inventory[i].size }, ${ inventory[i].color }</li>` );
     } // end for
 } // end displayInventory
+
+function search(){
+    console.log( 'in search' );
+    // loop through inventory and capture matches on both size and color
+    const sizeSearch = $( '#sizeSearchIn' ).val();
+    const colorSearch = $( '#colorSearchIn' ).val();
+    console.log( 'searching for:', sizeSearch, colorSearch );
+    let matches = [];
+    for( let i=0; i<inventory.length; i++ ){
+        // if match on both, push into array
+        if( inventory[i].size === sizeSearch && inventory[i].color === colorSearch ){
+            matches.push( inventory[i] );
+        } //end match
+    } // end for
+    console.log( 'matches:', matches );
+    // display matches for sale
+} // end search
