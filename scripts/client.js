@@ -7,6 +7,8 @@ function onReady(){
     console.log( 'in onReady' );
     $( '#addItemButton' ).on( 'click', addItem );
     $( '#searchButton' ).on( 'click', search );
+    // descent click handler
+    $( '#matchesOut' ).on( 'click', '.sellItemButton', sellItem );
 } // end onReady    
 
 function addItem(){
@@ -58,6 +60,13 @@ function search(){
     // loop through matches array
     for( let j=0; j<matches.length; j++){
         // append matches to DOM
-        el.append( `<li>${ matches[j].description }</li>`)
+        el.append( `<li>${ matches[j].description } <button class="sellItemButton">Sell</button></li>`)
     } // end for
 } // end search
+
+function sellItem(){
+    console.log( 'in sellItem' );
+    let el = $( this );
+    console.log( 'clicked on:', el );
+    console.log( 'my parent:', el.parent() );
+} // end sellItem
