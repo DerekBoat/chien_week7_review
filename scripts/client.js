@@ -51,4 +51,13 @@ function search(){
     } // end for
     console.log( 'matches:', matches );
     // display matches for sale
+    // select output el
+    let el = $( '#matchesOut' );
+    // empty it
+    el.empty();
+    // loop through matches array
+    for( let j=0; j<matches.length; j++){
+        // append matches to DOM
+        el.append( `<li>${ matches[j].description }</li>`)
+    } // end for
 } // end search
